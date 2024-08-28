@@ -1,0 +1,35 @@
+{
+    "private": true,
+    "name": "warcraft3-parser",
+    "version": "0.0.0",
+    "description": "Parser for Warcraft 3: Reforged file formats.",
+    "license": "MIT",
+    "type": "module",
+    "files": [
+        "/lib"
+    ],
+    "exports": {
+        "./mdx": {
+            "types": "./lib/mdx/index.d.ts",
+            "import": "./lib/mdx.js"
+        }
+    },
+    "scripts": {
+        "build": "vite build",
+        "watch": "vite build --watch",
+        "types:emit": "tsc",
+        "types:check": "tsc --noEmit --emitDeclarationOnly false",
+        "lint": "eslint ./src",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "peerDependencies": {
+        "hexcod": "file:hexcod-0.0.0.tgz"
+    },
+    "devDependencies": {
+        "@eslint/js": "^8.57.0",
+        "eslint": "^8.57.0",
+        "typescript": "^5.2.2",
+        "typescript-eslint": "^7.17.0",
+        "vite": "^5.3.4"
+    }
+}
