@@ -44,21 +44,26 @@ console.log(`Blend time: ${ model.metadata?.blendTime }`);
 // Blend time: 150
 ```
 
-## Prerequirements
-
-This package heavily relies on [fizary/hexcod](https://github.com/fizary/hexcod) package that is not published and requires manual installation.
-Please follow installation steps from that package first.
-
 ## Installation
 
 This package is not published in any registry and requires manual installation.
+
+### 1. Prerequirements
+
+This package heavily relies on [fizary/hexcod](https://github.com/fizary/hexcod) package that is not published and requires manual installation.
+Please follow first step of installation process from that package first.
+
+Both hexcod and this package should be colocated in same parent directory (eg. projects/hexcod and projects/warcraft3-parser).
+
+### 2. Clone and compile source
 
 ```bash
 # Clone repository
 git clone https://github.com/fizary/warcraft3-parser.git
 cd warcraft3-parser
 
-# Install dependencies, this step requires fizary/hexcod package tarball to be present in root directory (please read prerequirements)
+# READ PREREQUIREMENTS BEFORE INSTALLING DEPENDENCIES
+# Install dependencies
 npm i
 
 # Compile source code
@@ -66,13 +71,33 @@ npm run build
 
 # Generate type declarations
 npm run types:emit
-
-# Create package tarball to be installed in your project
-npm pack
 ```
 
-Last step is to move created tarball into your projects root directory and install it.
+### 3. Installation from local source
+
+There are couple ways to install dependencies from local source.
+
+#### Install from directory (recommended)
 
 ```bash
-npm i warcraft3-parser-0.0.0.tgz
+# Use `file:` protocol with path to directory you want to install, eg.
+npm i file:../warcraft3-parser
+```
+
+**Important!** Make sure directory you want to install is located outside of your project's root directory to avoid installing and hoisting it's dependencies to your project's node_modules.
+
+#### Install from tarball
+
+```bash
+# Run this command in library's root directory to create tarball
+npm pack
+
+# You can move this tarball to any location, in this example we will move it to parent directory
+mv warcraft3-parser-0.0.0.tgz ../warcraft3-parser-0.0.0.tgz
+
+# Then we go to our project's root directory
+cd ../my-project
+
+# And finally install the dependency
+npm i ../warcraft3-parser-0.0.0.tgz
 ```

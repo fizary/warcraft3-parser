@@ -23,7 +23,7 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "peerDependencies": {
-        "hexcod": "file:hexcod-0.0.0.tgz"
+        "hexcod": "file:../hexcod"
     },
     "devDependencies": {
         "@eslint/js": "^8.57.0",
